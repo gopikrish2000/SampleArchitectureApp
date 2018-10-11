@@ -1,17 +1,15 @@
 package com.gopi.architecture.sample.samplearchitectureapp.navigationdrawer
 
-import android.graphics.Color
 import android.os.Build
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
 import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.ActionBarDrawerToggle
+import android.support.v7.app.AppCompatActivity
 import android.view.View
+import android.view.WindowManager
 import com.gopi.architecture.sample.samplearchitectureapp.R
 import kotlinx.android.synthetic.main.activity_navigation_drawer.*
-import android.view.WindowManager
 
 
 class NavigationDrawerActivity : AppCompatActivity() {
@@ -43,50 +41,16 @@ class NavigationDrawerActivity : AppCompatActivity() {
 
             true
         }*/
-        someTv.setOnClickListener { v -> mDrawerLayout.closeDrawers() }
+//        someTv.setOnClickListener { v -> mDrawerLayout.closeDrawers() }
 
-        third_item.setOnClickListener { v -> mDrawerLayout.openDrawer(GravityCompat.END, true) }
-        mDrawerLayout.addDrawerListener(object : DrawerLayout.DrawerListener {
-            override fun onDrawerStateChanged(p0: Int) {
-            }
+        val navigationDrawerManager = NavigationDrawerManager()
+        third_item.setOnClickListener { v -> navigationDrawerManager.toggleNavigationDrawerState(true) }
 
-            override fun onDrawerSlide(p0: View, p1: Float) {
-            }
 
-            override fun onDrawerClosed(p0: View) {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    setStatusBarTranslucent(false)
-//                    getWindow().setStatusBarColor(oldStatusBarColor)
-                };
-            }
-
-            override fun onDrawerOpened(p0: View) {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    if (oldStatusBarColor == -1) {
-                        oldStatusBarColor = window.statusBarColor
-                    }
-//                    getWindow().setStatusBarColor(Color.TRANSPARENT)
-                    setStatusBarTranslucent(true)
-                };
-            }
-
-        })
+        navigationDrawerManager.initUIBindings(findViewById(R.id.hike_nav_recyclerview), mDrawerLayout)
     }
 
-    fun setStatusBarTranslucent(makeTranslucent: Boolean) {
-        if (makeTranslucent) {
-            window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-            //setWindowFlag(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS or WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION, false)
-//            window.statusBarColor = Color.TRANSPARENT
-            /*getWindow().setFlags(
-                    WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
-                    WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
-            );*/
-        } else {
-            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-//            window.clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
-        }
-    }
+
 
 
     fun setupDrawerToggle() {

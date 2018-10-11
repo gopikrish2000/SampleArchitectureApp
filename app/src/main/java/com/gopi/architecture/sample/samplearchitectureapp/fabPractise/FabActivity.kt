@@ -3,12 +3,10 @@ package com.gopi.architecture.sample.samplearchitectureapp.fabPractise
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.widget.Button
 import android.widget.Toast
-import com.github.clans.fab.FloatingActionButton
 import com.github.clans.fab.FloatingActionMenu
 import com.gopi.architecture.sample.samplearchitectureapp.R
 

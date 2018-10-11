@@ -62,58 +62,8 @@
          android:fitsSystemWindows="true"
          app:headerLayout="@layout/nav_header"
           />-->
-    <LinearLayout
-        android:id="@+id/nav_view"
-        android:layout_width="240dp"
-        android:layout_height="match_parent"
-        android:layout_gravity="end"
-        android:layout_marginTop="0dp"
-        android:background="@color/white"
-        android:fitsSystemWindows="false"
-        android:orientation="vertical">
-
-        <include layout="@layout/nav_header"/>
-
-        <TextView
-            android:id="@+id/someTv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="this is textView"
-            android:textColor="#ff0000"
-            android:textSize="14sp"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="this is textView1"
-            android:textColor="#ff0000"
-            android:textSize="14sp"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="this is textView2"
-            android:textColor="#ff0000"
-            android:textSize="14sp"
-            />
-    </LinearLayout>
+    <include layout="@layout/hike_navigation_layout"/>
 
 </android.support.v4.widget.DrawerLayout>
-
-    <!--<TextView
-    android:id="@+id/someTextTv"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="SOME TEXT"
-    android:textColor="#142031"
-    android:textSize="29sp"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-        />-->
-
     <!--
     </android.support.constraint.ConstraintLayout>-->

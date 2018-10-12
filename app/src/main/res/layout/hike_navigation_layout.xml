@@ -68,7 +68,6 @@
             android:id="@+id/nav_profile_camera"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:src="@drawable/ic_action_car"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/nav_profile_edit"
             />
@@ -77,7 +76,6 @@
             android:id="@+id/nav_profile_edit"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:src="@drawable/ic_action_bus"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             />

@@ -1,5 +1,7 @@
 package com.gopi.architecture.sample.samplearchitectureapp.navigationdrawer
 
+import android.graphics.Color
+import android.graphics.PorterDuff
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +11,9 @@ import com.gopi.architecture.sample.samplearchitectureapp.R
 import com.gopi.architecture.sample.samplearchitectureapp.navigationdrawer.extensions.inflate
 import com.gopi.architecture.sample.samplearchitectureapp.navigationdrawer.extensions.setGone
 import com.gopi.architecture.sample.samplearchitectureapp.navigationdrawer.extensions.setVisible
+import com.gopi.architecture.sample.samplearchitectureapp.navigationdrawer.repository.NavigationItem
+import com.gopi.architecture.sample.samplearchitectureapp.navigationdrawer.repository.NavigationItemCounter
+
 
 class NavigationAdapter(var navigationItemList: MutableList<NavigationItem>, val itemClickListener: (item: NavigationItem, position: Int) -> Unit) : RecyclerView.Adapter<NavigationViewHolder>() {
 
@@ -23,14 +28,14 @@ class NavigationAdapter(var navigationItemList: MutableList<NavigationItem>, val
     override fun onBindViewHolder(viewHolder: NavigationViewHolder, position: Int) {
         val item = navigationItemList[position]
         viewHolder.navIv.setImageResource(item.iconDrawable)
-        viewHolder.navIv.setBackgroundColor(viewHolder.itemView.context.resources.getColor(item.backgroundColor))
         viewHolder.navTitle.setText(item.title)
-        /*if(item.counter)*/
-        viewHolder.navCounter.setGone()
-        item.counter?.apply {
+        if (item is NavigationItemCounter) {
             viewHolder.navCounter.setVisible()
             viewHolder.navCounter.setText(item.counter.toString())
+        } else {
+            viewHolder.navCounter.setGone()
         }
+        viewHolder.itemView.setOnClickListener { v -> itemClickListener(item, position) }
     }
 }
 

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <item type="id" name="nav_id_posts" />
+    <item type="id" name="nav_id_myfriends" />
+    <item type="id" name="nav_id_notifications" />
+    <item type="id" name="nav_id_privacy" />
+    <item type="id" name="nav_id_settings" />
+</resources>

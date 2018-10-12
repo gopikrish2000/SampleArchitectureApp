@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_view"
+    android:id="@+id/navigation_view_parent"
     android:layout_width="260dp"
     android:layout_height="match_parent"
     android:layout_gravity="end"
@@ -13,25 +13,76 @@
     android:orientation="vertical"
     >
 
-    <!--<include layout="@layout/nav_header"/>-->
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                  android:id="@+id/nav_header_parent"
-                  android:layout_width="match_parent"
-                  android:layout_height="192dp"
-                  android:background="?attr/colorPrimaryDark"
-                  android:fitsSystemWindows="false"
-                  android:gravity="bottom"
-                  android:orientation="vertical"
-                  android:padding="16dp"
-                  android:theme="@style/ThemeOverlay.AppCompat.Dark">
+    <!--<include layout="@layout/nav_header"/>
+    android:theme="@style/ThemeOverlay.AppCompat.Dark"
+    -->
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/nav_header_parent"
+        android:layout_width="match_parent"
+        android:layout_height="192dp"
+        android:fitsSystemWindows="false"
+        >
+
+        <ImageView
+            android:id="@+id/nav_profile_iv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:src="?attr/colorPrimaryDark"
+            android:scaleType="fitXY"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@drawable/shapedblackbg"
+            />
 
         <TextView
-            android:layout_width="match_parent"
+            android:id="@+id/nav_profile_name"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="My header title"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
+            android:layout_marginStart="16dp"
+            android:textColor="#ffffff"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/nav_profile_hikeid"
+            app:layout_constraintLeft_toLeftOf="parent"
+            tools:text="My header title"
+            />
 
-    </LinearLayout>
+        <TextView
+            android:id="@+id/nav_profile_hikeid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="12dp"
+            android:alpha="0.6"
+            android:textColor="#ffffff"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            tools:text="hikeId"
+            />
+
+        <ImageView
+            android:id="@+id/nav_profile_camera"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_action_car"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/nav_profile_edit"
+            />
+
+        <ImageView
+            android:id="@+id/nav_profile_edit"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_action_bus"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            />
+
+    </android.support.constraint.ConstraintLayout>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/hike_nav_recyclerview"

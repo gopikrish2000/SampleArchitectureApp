@@ -12,17 +12,17 @@ import com.gopi.architecture.sample.samplearchitectureapp.nestedViewpager.fragme
 import com.gopi.architecture.sample.samplearchitectureapp.nestedViewpager.fragments.NestedFragment
 
 class ParentPagerAdapter(val fm: FragmentManager?, var itemList: MutableList<PagerItem>, val activity: NestedViewPagerActivity) : FragmentPagerAdapter(fm) {
-    val nestedFragment: NestedFragment
+//    val nestedFragment: NestedFragment
 
     init {
-        nestedFragment = NestedFragment(fm, activity)
+//        nestedFragment = NestedFragment(fm, activity)
     }
 
     override fun getItem(position: Int): Fragment {
         val item = itemList[position]
         return when (position) {
-            0 -> nestedFragment
-            else -> BaseFragment(item.id, item.colorString, item.id.toString(), item.type)
+            0 -> NestedFragment()
+            else -> BaseFragment.newInstance(item.id, item.colorString, item.id.toString(), item.type)
         }
     }
 
@@ -41,12 +41,12 @@ class ParentPagerAdapter(val fm: FragmentManager?, var itemList: MutableList<Pag
     }
 }
 
-class ChildPagerAdapter(val fm: FragmentManager?, var itemList: MutableList<PagerItem>, val activity: NestedViewPagerActivity) : FragmentPagerAdapter(fm) {
+class ChildPagerAdapter(val fm: FragmentManager?, var itemList: MutableList<PagerItem>, val activityInstance: NestedViewPagerActivity?) : FragmentPagerAdapter(fm) {
 
     override fun getItem(position: Int): Fragment {
         val item = itemList[position]
         return when (position) {
-            else -> NestedChildFragment(item.id, item.colorString, item.id.toString(), item.type, activity)
+            else -> NestedChildFragment.newInstance(item.id, item.colorString, item.id.toString(), item.type, activityInstance)
         }
     }
 

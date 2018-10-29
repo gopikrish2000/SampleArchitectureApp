@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".advancedkotlin.KotlinViewReferenceActivity">
+
+    <TextView
+        android:id="@+id/ref_first_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="some text"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:textColor="@color/red"
+        android:textSize="14sp"
+        />
+    <TextView
+        android:id="@+id/ref_second_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/ref_first_tv"
+        android:layout_marginTop="16dp"
+        android:text="some text1"
+        android:textColor="@color/red"
+        android:textSize="14sp"
+        />
+
+</android.support.constraint.ConstraintLayout>

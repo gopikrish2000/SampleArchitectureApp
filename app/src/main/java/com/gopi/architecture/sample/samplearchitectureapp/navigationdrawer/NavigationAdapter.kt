@@ -1,7 +1,5 @@
 package com.gopi.architecture.sample.samplearchitectureapp.navigationdrawer
 
-import android.graphics.Color
-import android.graphics.PorterDuff
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup

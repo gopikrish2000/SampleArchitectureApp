@@ -11,20 +11,30 @@ import android.widget.TextView
 import android.support.constraint.ConstraintLayout
 import android.support.v4.app.FragmentManager
 import android.support.v4.view.ViewPager
+import com.gopi.architecture.sample.samplearchitectureapp.navigationdrawer.extensions.putStringInfo
 import com.gopi.architecture.sample.samplearchitectureapp.nestedViewpager.ChildPagerAdapter
 import com.gopi.architecture.sample.samplearchitectureapp.nestedViewpager.NestedViewPagerActivity
 import com.gopi.architecture.sample.samplearchitectureapp.nestedViewpager.PagerItem
-import com.gopi.architecture.sample.samplearchitectureapp.nestedViewpager.ParentPagerAdapter
-import kotlinx.android.synthetic.main.nested_pager_item.*
 
 
-open class BaseFragment(var fragmentId: Int, var colorString: String, var text: String, var type:String) : Fragment() {
+open class BaseFragment() : Fragment() {
     /*constructor( fragmentId:Int, colorString: String, text: String):this() {
 
     }*/
-    constructor() : this(0, "#ffffff", "","")
+//    constructor() : this(0, "#ffffff", "", "")
+
+    companion object {
+        fun newInstance(fragmentId: Int, colorString: String, text: String, type: String): BaseFragment {
+            val fragment = BaseFragment()
+            fragment.arguments = Bundle().apply { putStringInfo("colorStr", colorString).putStringInfo("text", text) }
+            return fragment
+        }
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+         val colorString = arguments?.getString("colorStr", "#ffffff")
+        val text = arguments?.getString("text", "DEFAULT_TEXT")
+
         val view = inflater.inflate(R.layout.pageritem, container, false)
         val pagerItemParent = view.findViewById(R.id.pager_item_parent) as ConstraintLayout
         val pagerItemText = view.findViewById(R.id.pager_item_text) as TextView
@@ -34,16 +44,17 @@ open class BaseFragment(var fragmentId: Int, var colorString: String, var text: 
     }
 }
 
-class NestedFragment(val fragmentManagerInstance: FragmentManager?, val activity: NestedViewPagerActivity?) : Fragment() {
+class NestedFragment() : Fragment() {
     var currentSelectedItem: Int = 0
 
-    constructor() : this(null, null)
+//    constructor() : this(null, null)
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+//        val fragmentManagerInstance: FragmentManager?, val activity: NestedViewPagerActivity?
         val view = inflater.inflate(R.layout.nested_pager_item, container, false)
         val nestedViewPager = view.findViewById(R.id.nested_viewpager) as ViewPager
-        nestedViewPager.setOffscreenPageLimit(3);
-        nestedViewPager.adapter = ChildPagerAdapter(fragmentManager, mutableListOf(PagerItem(4, "#ff0000","nested"), PagerItem(5, "#0000ff","nested")), activity!!)
+        nestedViewPager.offscreenPageLimit = 3;
+        nestedViewPager.adapter = ChildPagerAdapter(fragmentManager, mutableListOf(PagerItem(4, "#ff0000", "nested"), PagerItem(5, "#0000ff", "nested")), (activity as? NestedViewPagerActivity))
         nestedViewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
 
             override fun onPageScrollStateChanged(state: Int) {
@@ -52,6 +63,7 @@ class NestedFragment(val fragmentManagerInstance: FragmentManager?, val activity
             override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
 
             }
+
             override fun onPageSelected(position: Int) {
                 currentSelectedItem = position
             }
@@ -61,10 +73,21 @@ class NestedFragment(val fragmentManagerInstance: FragmentManager?, val activity
     }
 }
 
-class NestedChildFragment(var fragmentId: Int, var colorString: String, var text: String, var type:String, val activity: NestedViewPagerActivity?) : Fragment() {
-    constructor() : this(0, "#ffffff", "","", null)
+class NestedChildFragment() : Fragment() {
+
+    companion object {
+        fun newInstance(fragmentId: Int, colorString: String, text: String, type: String, activity: NestedViewPagerActivity?): NestedChildFragment {
+            val nestedChildFragment = NestedChildFragment()
+            nestedChildFragment.arguments = Bundle().apply { putStringInfo("colorStr", colorString).putStringInfo("text", text) }
+            return nestedChildFragment
+        }
+    }
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val colorString = arguments?.getString("colorStr", "#ffffff")
+        val text = arguments?.getString("text", "DEFAULT_TEXT")
+
         val view = inflater.inflate(R.layout.pageritem, container, false)
         val pagerItemParent = view.findViewById(R.id.pager_item_parent) as ConstraintLayout
         val pagerItemText = view.findViewById(R.id.pager_item_text) as TextView

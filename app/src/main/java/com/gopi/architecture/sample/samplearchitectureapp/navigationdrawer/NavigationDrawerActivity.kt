@@ -1,11 +1,13 @@
 package com.gopi.architecture.sample.samplearchitectureapp.navigationdrawer
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import com.gopi.architecture.sample.samplearchitectureapp.R
+import com.gopi.architecture.sample.samplearchitectureapp.fabPractise.FabActivity
 import kotlinx.android.synthetic.main.activity_navigation_drawer.*
 
 
@@ -41,7 +43,10 @@ class NavigationDrawerActivity : AppCompatActivity() {
 //        someTv.setOnClickListener { v -> mDrawerLayout.closeDrawers() }
 
         val navigationDrawerManager = NavigationDrawerManager()
-        third_item.setOnClickListener { v -> navigationDrawerManager.toggleNavigationDrawerState(true) }
+        third_item.setOnClickListener { v ->
+            navigationDrawerManager.toggleNavigationDrawerState(true)
+        }
+        second_item.setOnClickListener { startActivity(Intent(this, FabActivity::class.java)) }
 
 
         navigationDrawerManager.populateNavigationDrawer(this,findViewById(R.id.navigation_view_parent), findViewById(R.id.hike_nav_recyclerview), mDrawerLayout, "Gopi Krishna", "My HikeId")

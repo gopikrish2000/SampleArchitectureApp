@@ -7,7 +7,17 @@
     android:layout_height="match_parent"
     tools:context=".nestedViewpager.NestedViewPagerActivity">
 
+    <Button android:id="@+id/sample_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+        android:text="go to sample Other Activity"
+        />
     <com.gopi.architecture.sample.samplearchitectureapp.nestedViewpager.DisableableViewPager android:id="@+id/parent_view_pager"
+
+        app:layout_constraintTop_toBottomOf="@+id/sample_button"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

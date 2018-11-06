@@ -4,6 +4,8 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.os.Parcelable
 import android.support.v4.app.Fragment
 import android.support.v4.content.ContextCompat
@@ -12,11 +14,12 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.BounceInterpolator
 import android.view.animation.DecelerateInterpolator
+import android.view.animation.Interpolator
 import android.widget.TextView
 import com.gopi.architecture.sample.samplearchitectureapp.BuildConfig
 import java.io.Serializable
-import java.util.logging.Logger
 
 /**
  * Created by Gopi on 17/10/18.
@@ -26,20 +29,44 @@ fun ViewGroup.inflate(layoutRes: Int): View {
     return LayoutInflater.from(context).inflate(layoutRes, this, false)
 }
 
-fun View.setGone(doAnimation: Boolean = false) {
-    if(!doAnimation) {
+val DEFAULT_ANIMATION_PROPERTIES_OBJECT = ViewAnimationProperties()
+class ViewAnimationProperties(var durationMills:Long = 300, var startDelayMillis:Long = 0, var animateInterpolator: Interpolator = BounceInterpolator())
+
+fun <T : View> T.setGone(doAnimation: Boolean = false, animationPropertiesObject: ViewAnimationProperties? = null): T {
+    if (this.visibility == View.GONE) return this
+    if (!doAnimation) {
         this.visibility = View.GONE
-        return
+        return this
     }
-    animate().scaleX(0f).scaleY(0f).setInterpolator(DecelerateInterpolator()).withEndAction{ this.visibility = View.GONE}.start()
+    var animationProperties = animationPropertiesObject
+    if (animationProperties == null) animationProperties = DEFAULT_ANIMATION_PROPERTIES_OBJECT
+
+    fun animationBlock() {
+        animate().scaleX(0f).scaleX(0f).setInterpolator(animationProperties.animateInterpolator).setDuration(animationProperties.durationMills)
+                .withEndAction { this.visibility = View.GONE; scaleX = 1f;scaleY = 1f }.start()
+    }
+    if (animationProperties.startDelayMillis > 0) Handler(Looper.getMainLooper()).postDelayed({ animationBlock() }, animationProperties.startDelayMillis)
+    else animationBlock()
+    return this
 }
 
-fun View.setVisible(doAnimation: Boolean = false) {
-    if(!doAnimation) {
+fun <T : View> T.setVisible(doAnimation: Boolean = false, animationPropertiesObject: ViewAnimationProperties? = null): T {
+    if (this.visibility == View.VISIBLE) return this
+    if (!doAnimation) {
         this.visibility = View.VISIBLE
-        return
+        return this
     }
-    animate().scaleX(1f).scaleY(1f).setInterpolator(DecelerateInterpolator()).withEndAction{ this.visibility = View.VISIBLE}.start()
+
+    var animationProperties = animationPropertiesObject
+    if (animationProperties == null) animationProperties = DEFAULT_ANIMATION_PROPERTIES_OBJECT
+
+    fun animationBlock() {
+        scaleX = 0f; scaleY = 0f
+        animate().scaleX(1f).scaleX(1f).setInterpolator(animationProperties.animateInterpolator).setDuration(animationProperties.durationMills).withEndAction { this.visibility = View.VISIBLE }.start()
+    }
+    if (animationProperties.startDelayMillis > 0) Handler(Looper.getMainLooper()).postDelayed({ animationBlock() }, animationProperties.startDelayMillis)
+    else animationBlock()
+    return this
 }
 
 fun View.setInVisible() {
@@ -74,17 +101,11 @@ fun Context?.dpToPx(dp: Float): Int {
 
 inline fun <reified T> AppCompatActivity?.startActivityWithData(vararg pairs: Pair<String, Any?>) {
     this ?: return
-    /*val intent = Intent(this, T::class.java)
-    fillTheIntent(intent, pairs)
-    this.startActivity(intent)*/
     this.baseContext.startActivityWithData<T>(*pairs)
 }
 
 inline fun <reified T> Fragment?.startActivityWithData(vararg pairs: Pair<String, Any?>) {
     this ?: return
-    /*val intent = Intent(activity, T::class.java)
-    fillTheIntent(intent, pairs)
-    this.startActivity(intent)*/
     this.activity.startActivityWithData<T>(*pairs)
 }
 
@@ -116,7 +137,6 @@ fun fillTheIntent(intent: Intent, pairs: Array<out Pair<String, Any?>>) {
                 value.isArrayOf<CharSequence>() -> intent.putExtra(it.first, value)
                 value.isArrayOf<String>() -> intent.putExtra(it.first, value)
                 value.isArrayOf<Parcelable>() -> intent.putExtra(it.first, value)
-//                else -> throw Exception("Intent extra ${it.first} has wrong type ${value.javaClass.name}")
             }
             is IntArray -> intent.putExtra(it.first, value)
             is LongArray -> intent.putExtra(it.first, value)
@@ -126,7 +146,6 @@ fun fillTheIntent(intent: Intent, pairs: Array<out Pair<String, Any?>>) {
             is ShortArray -> intent.putExtra(it.first, value)
             is BooleanArray -> intent.putExtra(it.first, value)
             else -> {   // ignore
-//                throw Exception("Intent extra ${it.first} has wrong type ${value.javaClass.name}")
             }
         }
     }

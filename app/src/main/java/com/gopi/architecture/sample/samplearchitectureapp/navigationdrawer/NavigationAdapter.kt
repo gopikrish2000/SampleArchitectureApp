@@ -33,7 +33,7 @@ class NavigationAdapter(var navigationItemList: MutableList<NavigationItem>, val
         } else {
             viewHolder.navCounter.setGone()
         }
-        viewHolder.itemView.setOnClickListener { v -> itemClickListener(item, position) }
+        viewHolder.itemView.setOnClickListener { itemClickListener(item, position) }
     }
 }
 

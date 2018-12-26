@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<layer-list
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/white" />
+            <padding
+                android:left="0dip"
+                android:top="0dip"
+                android:right="0dip"
+                android:bottom="0dip" />
+        </shape>
+    </item>
+    <item>
+        <bitmap android:src="@drawable/ic_action_bus"
+                android:gravity="center" />
+    </item>
+    <item android:bottom="80dp" >
+        <bitmap android:src="@drawable/ic_action_achievement"
+                android:gravity="bottom" />
+    </item>
+</layer-list>
+
+
+
+<!--<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@color/white"/>
+
+    <item>
+        <bitmap
+            android:antialias="true"
+            android:gravity="center"
+            android:src="@drawable/ic_action_bus"/>
+
+
+    </item>
+    <item android:gravity="bottom" >
+        <bitmap
+            android:antialias="true"
+            android:tint="@color/red"
+            android:src="@drawable/ic_action_car"/>
+    </item>
+
+</layer-list>-->
+    <!--android:top="100dp" android:left="120dp"-->

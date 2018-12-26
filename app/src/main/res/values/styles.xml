@@ -24,4 +24,8 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
 
+    <style name="HomeActivityTheme" parent="AppTheme" >
+        <item name="android:windowBackground">@drawable/splash_new</item>
+    </style>
+
 </resources>

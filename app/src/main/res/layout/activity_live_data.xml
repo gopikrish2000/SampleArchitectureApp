@@ -20,13 +20,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{livedataVM.name.getValue()}"
-            tools:text="www"
             android:textColor="#142031"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginStart="4dp"
             app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{livedataVM.transformedName.getValue()}"
+            android:textColor="#142031"
+            android:textSize="14sp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintLeft_toRightOf="@+id/liveDataTv"
+            app:layout_constraintBottom_toBottomOf="@+id/liveDataTv"
             />
 
         <TextView
@@ -34,7 +44,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{livedataVM.age.getValue().toString()}"
-            tools:text="age"
             android:textColor="#142031"
             android:textSize="14sp"
             android:layout_marginTop="10dp"

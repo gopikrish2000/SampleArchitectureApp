@@ -1,23 +1,26 @@
 package com.gopi.architecture.sample.samplearchitectureapp.livedatalatest
 
-import android.arch.lifecycle.MediatorLiveData
-import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModel
+import android.arch.lifecycle.*
 import io.reactivex.Observable
 import io.reactivex.schedulers.Schedulers
 import java.util.concurrent.TimeUnit
 
 class FirstLiveData : ViewModel() {
 
-    val name: MutableLiveData<String>
+    val name: GopiMutableLiveData<String>
     val age: MutableLiveData<Int>
     val mediatorNameAge: MediatorLiveData<String>
+
+    val transformedName: LiveData<String>
     init {
-        name = MutableLiveData()
+        name = GopiMutableLiveData()
+//        name = GopiMutableLiveData.getInstanceGopi()  // if want to use a singleton across Activities use this.
         age = MutableLiveData()
         mediatorNameAge = MediatorLiveData()
+        transformedName = Transformations.map(name) { it.plus("valueTransformedHere")}
+
         mediatorNameAge.addSource(name) { mediatorNameAge.postValue(it.toString()) }
+        mediatorNameAge.addSource(transformedName) { mediatorNameAge.postValue(it.toString()) }
         mediatorNameAge.addSource(age) { mediatorNameAge.postValue(it.toString()) }
     }
 

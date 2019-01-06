@@ -5,6 +5,10 @@
         <variable
             name="liveDataBottomVM"
             type="com.gopi.architecture.sample.samplearchitectureapp.livedatalatest.LiveDataBottomVM"/>
+
+        <variable
+            name="livedataVM"
+            type="com.gopi.architecture.sample.samplearchitectureapp.livedatalatest.FirstLiveData"/>
     </data>
 
     <android.support.constraint.ConstraintLayout
@@ -43,7 +47,7 @@
             android:id="@+id/bottomPortionRightTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{liveDataBottomVM.thirdData}"
+            android:text="@{livedataVM.name}"
             android:textColor="#142031"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"

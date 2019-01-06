@@ -11,7 +11,7 @@ import com.gopi.architecture.sample.samplearchitectureapp.databinding.ActivityLi
 questions:
 . livedata is like a behavioural subject ? { YES correct }, upon coming back data u will receive updated data.
 . how can i have nested view models so that Page A & Page B can have some part common without completely depending on Single viewmodel ?
-  can create multiple ViewModels for a activity instead of SingleViewModel...
+Ans)   Create multiple ViewModels for a activity instead of SingleViewModel & make viewmodel as singleton with companionObject
 
 . Extending LiveData usecase  -> for multiple activities sharing common state. & also practise it ( see GopiMutableLiveData.kt )
 . how can i make same viewmodel for different activities.
@@ -40,9 +40,13 @@ class ViewModelFactory(private val lazyToolbarViewModel: Provider<ToolbarViewMod
 ************************************************************ Imp Points ************************************************************
 1) To use same viewmodel among different fragments of same activity use ViewModelsProvider.of(getActivity).get(...) instead of .of("this").get
 
-. Use MultipleViewModels with include tag in the xml layout so that small viewmodel can be reused n sharableable. NOTE:
+2) Use MultipleViewModels with include tag in the xml layout so that small viewmodel can be reused n sharableable. NOTE:
 
-2) class MyViewModel(private val repository: PostalCodeRepository) : ViewModel() {
+3) Passing databinding to childlayouts(include layouts) use <include id=@+id/myId layout=R.layout.abc app:livedataVM =@{livedataVM} /> & declare variable livedataVM in abc layout.
+
+4) Above Point3 instead can be passed this way from code binding.myId.livedataVM = liveDataVM ( as shown below )
+
+Last) class MyViewModel(private val repository: PostalCodeRepository) : ViewModel() {
 
     private fun getPostalCode(address: String): LiveData<String> {  // Never write method returning livedata as The UI component then needs to unregister from the previous LiveData object and register to the 																//new instance each time it calls getPostalCode(). In addition, if the UI component is recreated, it triggers another call to the
     																//repository.getPostCode() method instead of using the previous call’s result.
@@ -83,7 +87,7 @@ class LiveDataActivity : AppCompatActivity() {
         bottomViewModel = ViewModelProviders.of(this).get(LiveDataBottomVM::class.java)
         binding.setLifecycleOwner(this)   // Set this line to make data binding use live data.
         binding.livedataVM = firstViewModel
-        binding.liveDataBottomPortion.liveDataBottomVM = bottomViewModel
+        binding.liveDataBottomPortion.liveDataBottomVM = bottomViewModel   // this can also be passed to parent binding n can be passed to child include layout xml with app:liveDataBottomVM = @{liveDataBottomVM}  ; as told above in Point3
         firstViewModel.doSomeProcessing()
         bottomViewModel.doBottomBarProcess()
 

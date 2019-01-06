@@ -1,5 +1,6 @@
 package com.gopi.architecture.sample.samplearchitectureapp.livedatalatest.room
 
+import android.arch.lifecycle.LiveData
 import android.arch.persistence.room.Dao
 import android.arch.persistence.room.Insert
 import android.arch.persistence.room.OnConflictStrategy
@@ -10,6 +11,9 @@ interface RoomFirstDao {
 
     @Query("SELECT * from RoomFirstEntry")
     fun getAllRoomEntries(): List<RoomFirstEntry>
+
+    @Query("SELECT * from RoomFirstEntry")
+    fun getAllRoomEntriesLiveData(): LiveData<List<RoomFirstEntry>>
 
     @Query("SELECT * from RoomFirstEntry WHERE name == :nameInput  limit 1")
     fun getSecondRoomEntries(nameInput: String): RoomFirstEntry

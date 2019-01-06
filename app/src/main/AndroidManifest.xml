@@ -82,7 +82,8 @@
             </intent-filter>
             -->
         </activity>
-        <activity android:name=".common.ForwarderActivity"
+        <activity
+            android:name=".common.ForwarderActivity"
             android:theme="@style/HomeActivityTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -91,6 +92,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".rxjavaLatest.RxjavaPracActivity">
+        </activity>
+        <activity android:name=".livedatalatest.LiveDataActivity">
         </activity>
     </application>
 

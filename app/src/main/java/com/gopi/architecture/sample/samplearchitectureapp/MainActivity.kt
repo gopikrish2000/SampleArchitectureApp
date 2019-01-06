@@ -2,12 +2,11 @@ package com.gopi.architecture.sample.samplearchitectureapp
 
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import com.gopi.architecture.sample.samplearchitectureapp.adapters.ImagePresenterAdapter
-import com.gopi.architecture.sample.samplearchitectureapp.pojos.ImageData
 import com.gopi.architecture.sample.samplearchitectureapp.viewModels.ImageDataVM
 
 class MainActivity : AppCompatActivity() {

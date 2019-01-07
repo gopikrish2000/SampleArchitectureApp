@@ -67,7 +67,7 @@
             app:layout_constraintRight_toRightOf="parent"
             />
 
-        <Button
+        <Button android:id="@+id/align_generate_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="generate newval"
@@ -78,12 +78,20 @@
             android:onClick="@{() -> livedataVM.doSomeProcessing()}"
             />
 
+        <Button android:id="@+id/goToNextPage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Go to NextPage"
+            app:layout_constraintLeft_toRightOf="@+id/align_generate_btn"
+            />
+
         <include android:id="@+id/liveDataBottomPortion"
                  android:layout_width="match_parent"
                  android:layout_height="wrap_content"
                  app:layout_constraintBottom_toBottomOf="parent"
-                 app:livedataVM ="@{livedataVM}"
+
                  layout="@layout/livedata_bottom_portion" />
 
     </android.support.constraint.ConstraintLayout>
 </layout>
+<!-- app:livedataVM ="@{livedataVM}"-->

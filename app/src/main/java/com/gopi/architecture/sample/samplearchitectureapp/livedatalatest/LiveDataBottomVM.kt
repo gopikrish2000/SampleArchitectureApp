@@ -23,4 +23,14 @@ class LiveDataBottomVM : ViewModel() {
 
         Observable.just(input).delay(3, TimeUnit.SECONDS).subscribeOn(Schedulers.computation()).observeOn(Schedulers.computation()).subscribe { secondData.postValue(random.toString()) }
     }
+
+    companion object {
+        private var INSTANCE: LiveDataBottomVM? = null
+
+        fun getInstance(): LiveDataBottomVM{
+            return if(INSTANCE != null) INSTANCE!! else LiveDataBottomVM()
+        }
+
+
+    }
 }

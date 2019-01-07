@@ -97,6 +97,8 @@
         </activity>
         <activity android:name=".livedatalatest.room.RoomLiveDataTestActivity">
         </activity>
+        <activity android:name=".livedatalatest.SecondLiveDataActivity">
+        </activity>
     </application>
 
 </manifest>

@@ -1,6 +1,7 @@
 package com.gopi.architecture.sample.samplearchitectureapp.livedatalatest
 
 import android.arch.lifecycle.ViewModelProviders
+import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -85,6 +86,7 @@ class LiveDataActivity : AppCompatActivity() {
     private fun doInit() {
         firstViewModel = ViewModelProviders.of(this).get(FirstLiveData::class.java)
         bottomViewModel = ViewModelProviders.of(this).get(LiveDataBottomVM::class.java)
+//        bottomViewModel = LiveDataBottomVM.getInstance()
         binding.setLifecycleOwner(this)   // Set this line to make data binding use live data.
         binding.livedataVM = firstViewModel
         binding.liveDataBottomPortion.liveDataBottomVM = bottomViewModel   // this can also be passed to parent binding n can be passed to child include layout xml with app:liveDataBottomVM = @{liveDataBottomVM}  ; as told above in Point3
@@ -98,6 +100,6 @@ class LiveDataActivity : AppCompatActivity() {
     }
 
     private fun doLogic() {
-
+        binding.goToNextPage.setOnClickListener { startActivity(Intent(this, SecondLiveDataActivity::class.java)) }
     }
 }

@@ -85,8 +85,9 @@ class LiveDataActivity : AppCompatActivity() {
 
     private fun doInit() {
         firstViewModel = ViewModelProviders.of(this).get(FirstLiveData::class.java)
-        bottomViewModel = ViewModelProviders.of(this).get(LiveDataBottomVM::class.java)
-//        bottomViewModel = LiveDataBottomVM.getInstance()
+//        bottomViewModel = ViewModelProviders.of(this).get(LiveDataBottomVM::class.java)
+        bottomViewModel = LiveDataBottomVM.getActiveInstance()
+        DummyJava.liveDataBottomVM = bottomViewModel
         binding.setLifecycleOwner(this)   // Set this line to make data binding use live data.
         binding.livedataVM = firstViewModel
         binding.liveDataBottomPortion.liveDataBottomVM = bottomViewModel   // this can also be passed to parent binding n can be passed to child include layout xml with app:liveDataBottomVM = @{liveDataBottomVM}  ; as told above in Point3

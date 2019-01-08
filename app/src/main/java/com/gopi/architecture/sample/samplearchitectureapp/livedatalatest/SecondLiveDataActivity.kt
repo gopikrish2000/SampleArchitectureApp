@@ -1,5 +1,6 @@
 package com.gopi.architecture.sample.samplearchitectureapp.livedatalatest
 
+import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
 import android.os.Bundle
@@ -15,13 +16,17 @@ class SecondLiveDataActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 //        setContentView(R.layout.activity_second_live_data)
         binding = DataBindingUtil.setContentView<ActivitySecondLiveDataBinding>(this, R.layout.activity_second_live_data)
-//        var bottomViewModel = LiveDataBottomVM.getInstance()
-       var bottomViewModel = ViewModelProviders.of(this).get(LiveDataBottomVM::class.java)
+        binding.setLifecycleOwner(this)
+        var bottomViewModel = LiveDataBottomVM.getActiveInstance()
+//        var bottomViewModel = LiveDataBottomVM.objInstan!!
+//        var bottomViewModel = DummyJava.liveDataBottomVM
+//       var bottomViewModel = ViewModelProviders.of(this).get(LiveDataBottomVM::class.java)
 
         binding.liveDataBottomVM = bottomViewModel
         binding.liveDataBottomPortion.liveDataBottomVM = bottomViewModel
 //        binding.liveDataVM = FirstLiveData()
-
-        bottomViewModel.doBottomBarProcess()
+//        bottomViewModel.doBottomBarProcess()
+//        binding.root.requestLayout()
+//        bottomViewModel.firstData.observe(this, Observer{ binding.root.requestLayout()})
     }
 }

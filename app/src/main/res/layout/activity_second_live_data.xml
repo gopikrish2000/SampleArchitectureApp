@@ -22,7 +22,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="second page"
+        android:text="@{liveDataBottomVM.firstData.getValue()}"
         android:textColor="#142031"
         android:textSize="14sp"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -35,11 +35,13 @@
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
              app:layout_constraintBottom_toBottomOf="parent"
-             app:liveDataBottomVM="@{liveDataBottomVM}"
+
              layout="@layout/livedata_bottom_portion" />
 
 </android.support.constraint.ConstraintLayout>
 
 </layout>
+
+<!-- app:liveDataBottomVM="@{liveDataBottomVM}"-->
 
 <!--app:livedataVM="@{livedataVM}"-->

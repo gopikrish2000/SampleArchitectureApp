@@ -4,6 +4,8 @@ import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.Transformations
 import android.arch.lifecycle.ViewModel
+import android.util.Log
+import com.gopi.architecture.sample.samplearchitectureapp.repositories.ImageRepository
 import io.reactivex.Observable
 import io.reactivex.schedulers.Schedulers
 import java.util.concurrent.TimeUnit
@@ -25,10 +27,26 @@ class LiveDataBottomVM : ViewModel() {
     }
 
     companion object {
-        private var INSTANCE: LiveDataBottomVM? = null
+         var objInstan: LiveDataBottomVM? = null
 
-        fun getInstance(): LiveDataBottomVM{
-            return if(INSTANCE != null) INSTANCE!! else LiveDataBottomVM()
+        fun getActiveInstance(): LiveDataBottomVM{
+           /* return if(objInstan != null) {
+                objInstan!!
+            } else {
+                Log.i("GOPI","creating new instance LiveDataBottomVM")
+                LiveDataBottomVM()
+            }*/
+
+            if (LiveDataBottomVM.objInstan == null) {
+                synchronized(this) {
+                    if (LiveDataBottomVM.objInstan == null) {
+                        Log.i("GOPI","creating new instance LiveDataBottomVM1")
+                        objInstan = LiveDataBottomVM()
+                        return objInstan!!
+                    }
+                }
+            }
+            return objInstan!!
         }
 
 

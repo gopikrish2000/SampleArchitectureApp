@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.gopi.architecture.sample.samplearchitectureapp.R
 import com.gopi.architecture.sample.samplearchitectureapp.livedatalatest.LiveDataActivity
+import com.gopi.architecture.sample.samplearchitectureapp.livedatalatest.SecondLiveDataActivity
 import com.gopi.architecture.sample.samplearchitectureapp.livedatalatest.room.RoomLiveDataTestActivity
 import com.gopi.architecture.sample.samplearchitectureapp.rxjavaLatest.RxjavaPracActivity
 

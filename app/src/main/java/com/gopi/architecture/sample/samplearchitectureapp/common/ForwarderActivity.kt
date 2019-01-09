@@ -10,7 +10,7 @@ import com.gopi.architecture.sample.samplearchitectureapp.livedatalatest.room.Ro
 import com.gopi.architecture.sample.samplearchitectureapp.rxjavaLatest.RxjavaPracActivity
 
 class ForwarderActivity : AppCompatActivity() {
-    var classToForward = LiveDataActivity::class.java
+    var classToForward = RoomLiveDataTestActivity::class.java
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

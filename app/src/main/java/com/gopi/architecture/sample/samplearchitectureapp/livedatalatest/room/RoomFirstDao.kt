@@ -16,11 +16,11 @@ interface RoomFirstDao {
     fun getAllRoomEntriesLiveData(): LiveData<List<RoomFirstEntry>>
 
     @Query("SELECT * from RoomFirstEntry WHERE name == :nameInput  limit 1")
-    fun getSecondRoomEntries(nameInput: String): RoomFirstEntry
+    fun getSecondRoomEntries(nameInput: String): LiveData<RoomFirstEntry>
 
 
-//    @Query("UPDATE RoomFirstEntry SET description = :nameInput  WHERE name=:findName")
-//    fun updateRoomEntry(nameInput: String, findName: String): RoomFirstEntry
+    @Query("UPDATE RoomFirstEntry SET description = :nameInput  WHERE name == :findName")
+    fun updateRoomEntry(nameInput: String, findName: String)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertRoomEntry(item: RoomFirstEntry)

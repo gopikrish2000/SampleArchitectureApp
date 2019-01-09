@@ -102,5 +102,6 @@ class LiveDataActivity : AppCompatActivity() {
 
     private fun doLogic() {
         binding.goToNextPage.setOnClickListener { startActivity(Intent(this, SecondLiveDataActivity::class.java)) }
+        binding.goToNextFragment.setOnClickListener { supportFragmentManager.beginTransaction().add(R.id.secondFragment,NextLiveDataFragment()).addToBackStack("nextFrag").commit() }
     }
 }

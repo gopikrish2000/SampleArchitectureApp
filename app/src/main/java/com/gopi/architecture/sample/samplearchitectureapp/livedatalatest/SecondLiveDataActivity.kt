@@ -1,7 +1,5 @@
 package com.gopi.architecture.sample.samplearchitectureapp.livedatalatest
 
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity

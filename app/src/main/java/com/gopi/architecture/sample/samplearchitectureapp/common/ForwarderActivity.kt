@@ -8,9 +8,10 @@ import com.gopi.architecture.sample.samplearchitectureapp.livedatalatest.LiveDat
 import com.gopi.architecture.sample.samplearchitectureapp.livedatalatest.SecondLiveDataActivity
 import com.gopi.architecture.sample.samplearchitectureapp.livedatalatest.room.RoomLiveDataTestActivity
 import com.gopi.architecture.sample.samplearchitectureapp.rxjavaLatest.RxjavaPracActivity
+import com.gopi.architecture.sample.samplearchitectureapp.workmanager.WorkManagerActivity
 
 class ForwarderActivity : AppCompatActivity() {
-    var classToForward = RoomLiveDataTestActivity::class.java
+    var classToForward = WorkManagerActivity::class.java
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

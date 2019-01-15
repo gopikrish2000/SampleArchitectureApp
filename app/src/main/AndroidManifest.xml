@@ -99,6 +99,20 @@
         </activity>
         <activity android:name=".livedatalatest.SecondLiveDataActivity">
         </activity>
+        <activity android:name=".workmanager.WorkManagerActivity">
+        </activity>
+        <activity android:name=".shareactivity.ShareActivity" android:enabled="false"
+            >
+            <intent-filter
+                android:label="Gopi Share with my app">
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="*/*"/>
+            </intent-filter>
+        </activity>
+        <activity-alias android:enabled="false"
+            android:name=".AliasShareActivity"
+            android:targetActivity=".shareactivity.ShareActivity" />
     </application>
 
 </manifest>

@@ -1,7 +1,10 @@
 package com.gopi.architecture.sample.samplearchitectureapp.rxjavaLatest
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.support.v7.app.AppCompatActivity
+import android.widget.Toast
 import com.gopi.architecture.sample.samplearchitectureapp.R
 import io.reactivex.*
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -60,6 +63,24 @@ class RxjavaPracActivity : AppCompatActivity() {
 
             Flowable.fromCallable { 10}.delay(20,TimeUnit.SECONDS).observeOn(AndroidSchedulers.mainThread()).subscribe { rxTextTv.setText("FlowableFromCallable $it") }  // shorthand way of creating observables without emitter.onNext() & emiter.onCompleted()
 
+        }
+    }
+
+    private fun handleMessage() {  // this will crash bcoz method is returned
+        try {
+            Handler(Looper.getMainLooper()).postDelayed({
+                1 / 0
+            }, 2000)
+        } catch (e: Exception) {
+            Toast.makeText(this,"HandledMessage", Toast.LENGTH_LONG).show()
+        }
+    }
+
+    private fun handleMessageOther() {  // this will also crash bcoz method is returned
+        try {
+            Observable.just(2).delay(10, TimeUnit.SECONDS).subscribeOn(Schedulers.computation()).observeOn(AndroidSchedulers.mainThread()).subscribe { 1/0 }
+        } catch (e: Exception) {
+            Toast.makeText(this,"HandledMessage", Toast.LENGTH_LONG).show()
         }
     }
 }

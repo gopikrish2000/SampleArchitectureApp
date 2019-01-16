@@ -101,18 +101,23 @@
         </activity>
         <activity android:name=".workmanager.WorkManagerActivity">
         </activity>
-        <activity android:name=".shareactivity.ShareActivity" android:enabled="false"
-            >
-            <intent-filter
-                android:label="Gopi Share with my app">
-                <action android:name="android.intent.action.SEND" />
-                <category android:name="android.intent.category.DEFAULT" />
+        <activity android:name=".shareactivity.ShareActivity">
+            <intent-filter android:label="Gopi Share with my app">
+                <action android:name="android.intent.action.SEND"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+
                 <data android:mimeType="*/*"/>
             </intent-filter>
         </activity>
-        <activity-alias android:enabled="false"
+
+        <activity-alias
             android:name=".AliasShareActivity"
-            android:targetActivity=".shareactivity.ShareActivity" />
+            android:enabled="false"
+            android:targetActivity=".shareactivity.ShareActivity"/>
+
+        <activity android:name=".ActivityAliasFunctionalityActivity">
+        </activity>
     </application>
 
 </manifest>

@@ -20,38 +20,6 @@ class WorkManagerActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_work_manager)
-
-//        handleMessageOther()
-        val intent = intent
-        val cn = intent.component
-        packageManager.setComponentEnabledSetting(ComponentName(packageName, packageName + ".AliasShareActivity"),PackageManager.COMPONENT_ENABLED_STATE_ENABLED,PackageManager.DONT_KILL_APP)
-        packageManager.setComponentEnabledSetting(ComponentName(packageName, packageName + ".shareactivity.ShareActivity"),PackageManager.COMPONENT_ENABLED_STATE_DISABLED,PackageManager.DONT_KILL_APP)
-
     }
 
-    private fun handleMessage() {  // this will crash bcoz method is returned
-        try {
-            Handler(Looper.getMainLooper()).postDelayed({
-                1 / 0
-            }, 2000)
-        } catch (e: Exception) {
-            Toast.makeText(this,"HandledMessage", Toast.LENGTH_LONG).show()
-        }
-    }
-
-    private fun handleMessageOther() {  // this will also crash bcoz method is returned
-        try {
-            Observable.just(2).delay(10, TimeUnit.SECONDS).subscribeOn(Schedulers.computation()).observeOn(AndroidSchedulers.mainThread()).subscribe { 1/0 }
-        } catch (e: Exception) {
-            Toast.makeText(this,"HandledMessage", Toast.LENGTH_LONG).show()
-        }
-    }
-}
-
-class BackgroundTemp {
-
-    fun doInBackground(){
-
-//        Observable.just(2).delay(10, TimeUnit.SECONDS).subscribeOn(Schedulers.computation()).observeOn(AndroidSchedulers.mainThread())
-    }
 }

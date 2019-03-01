@@ -121,8 +121,12 @@
         <activity android:name=".services.ForegroundServiceActivity">
         </activity>
 
-        <service android:name=".services.FirstForegroundService" android:enabled="true"
-            />
+        <service
+            android:name=".services.FirstForegroundService"
+            android:enabled="true"/>
+
+        <activity android:name=".parallaxAnimation.ParallaxAnimationActivity">
+        </activity>
     </application>
 
 </manifest>

@@ -28,13 +28,14 @@
             >
 
             <TextView
-                android:id="@+id/title_name"
+                android:id="@+id/titleNameHeader"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Name Gopi"
+                android:text="Gopi Krishna"
                 android:textColor="#142031"
                 android:textSize="14sp"
-                android:layout_gravity="center"
+                android:alpha="0"
+                android:layout_gravity="bottom|center_horizontal"
                 android:visibility="visible"
                 />
 
@@ -61,7 +62,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="48dp"
-        android:overScrollMode="ifContentScrolls"
+        android:overScrollMode="never"
         >
 
         <android.support.constraint.ConstraintLayout

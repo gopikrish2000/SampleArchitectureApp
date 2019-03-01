@@ -2,6 +2,8 @@ package com.gopi.architecture.sample.samplearchitectureapp.parallaxAnimation
 
 import android.graphics.Point
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.support.v4.widget.NestedScrollView
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
@@ -16,24 +18,19 @@ class ParallaxAnimationActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_parallax_transition_variant2)
         initAllView()
-        initViews()
+//        initViews()
+        productionReadyCode()
     }
 
     private fun initAllView() {
-
-    }
-
-    private fun initViews() {
         profileRv.layoutManager = LinearLayoutManager(this)
         val parallaxAnimationAdapter = ParallaxAnimationAdapter(mutableListOf(ParallaxItem("first"), ParallaxItem("second"), ParallaxItem("third"), ParallaxItem(), ParallaxItem(), ParallaxItem(), ParallaxItem(), ParallaxItem(), ParallaxItem(), ParallaxItem(), ParallaxItem(), ParallaxItem(), ParallaxItem(), ParallaxItem(), ParallaxItem(), ParallaxItem(), ParallaxItem(), ParallaxItem())) { item, position ->
         }
         profileRv.adapter = parallaxAnimationAdapter
+    }
 
-        /* getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver . OnGlobalLayoutListener () {
-             @Override
-             public void onGlobalLayout() {
+    private fun initViews() {
 
-             }*/
         var point = Point()
         var previousPercent: Float = -1f
         var profileNameHeight = -1
@@ -76,6 +73,49 @@ class ParallaxAnimationActivity : AppCompatActivity() {
 //                titleNameHeader.y = titleNameHeaderExtremePosition
             }
         }
+    }
+
+    private fun productionReadyCode(){
+
+        var previousMovedPercent: Float = -1f
+        var profileNameHeight = -1
+
+        var animationStartScrollPosition = -1
+        var animationEndScrollPosition = -1
+
+        var titleNameHeaderPositionInCenter = -1f    // title view of header
+        var titleNameHeaderBottomExtremePosition = -1f
+
+        rootView.viewTreeObserver.addOnGlobalLayoutListener {
+            profileNameHeight = profileName.height
+            animationStartScrollPosition = profileImageSectionParent.height + profileImageSectionParent.y.toInt() + this.dpToPx(8f)
+            animationEndScrollPosition = profileNameHeight + animationStartScrollPosition
+            titleNameHeaderPositionInCenter = this.dpToPx(24f).toFloat() - (titleNameHeader.height.toFloat()/2)
+            titleNameHeaderBottomExtremePosition = dpToPx(48f).toFloat() - titleNameHeader.height
+            profileNestedScrollView.scrollTo(0, 0)
+        }
+
+        profileNestedScrollView.setOnScrollChangeListener() { nestedScrollView: NestedScrollView?, scrollX: Int, scrollY: Int, oldScrollX: Int, oldScrollY: Int ->
+            Log.i("GopiLog", "scrolled with scrollY = $scrollY  && oldScrollY = $oldScrollY  ##########   with height $profileNameHeight  ;;;; ${animationStartScrollPosition}")
+            if (scrollY in animationStartScrollPosition..animationEndScrollPosition) {
+                val diff = animationEndScrollPosition - scrollY
+                var percent = (1 - (diff.toFloat().div(profileNameHeight)))
+                percent = Math.round(percent * 100).toFloat()/100
+                if(previousMovedPercent != percent) {  //optimization only when current percent != previous update it.
+                    titleNameHeader.alpha = percent
+                    titleNameHeader.y = titleNameHeaderBottomExtremePosition - percent * ((titleNameHeaderBottomExtremePosition - titleNameHeaderPositionInCenter))
+                    previousMovedPercent = percent
+                }
+            } else if (scrollY > animationEndScrollPosition) {
+                titleNameHeader.alpha = 1f
+                previousMovedPercent = 1f
+                titleNameHeader.y = titleNameHeaderPositionInCenter
+            } else {
+                titleNameHeader.alpha = 0f
+                previousMovedPercent = 0f
+            }
+        }
+
     }
 
 }

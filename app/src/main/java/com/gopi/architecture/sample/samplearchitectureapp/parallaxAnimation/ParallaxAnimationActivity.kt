@@ -2,8 +2,6 @@ package com.gopi.architecture.sample.samplearchitectureapp.parallaxAnimation
 
 import android.graphics.Point
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.support.v4.widget.NestedScrollView
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
@@ -79,6 +77,7 @@ class ParallaxAnimationActivity : AppCompatActivity() {
 
         var previousMovedPercent: Float = -1f
         var profileNameHeight = -1
+        val toolbarHeight = resources.getDimension(R.dimen.new_profile_toolbar_height)
 
         var animationStartScrollPosition = -1
         var animationEndScrollPosition = -1
@@ -86,12 +85,13 @@ class ParallaxAnimationActivity : AppCompatActivity() {
         var titleNameHeaderPositionInCenter = -1f    // title view of header
         var titleNameHeaderBottomExtremePosition = -1f
 
+
         rootView.viewTreeObserver.addOnGlobalLayoutListener {
             profileNameHeight = profileName.height
             animationStartScrollPosition = profileImageSectionParent.height + profileImageSectionParent.y.toInt() + this.dpToPx(8f)
             animationEndScrollPosition = profileNameHeight + animationStartScrollPosition
-            titleNameHeaderPositionInCenter = this.dpToPx(24f).toFloat() - (titleNameHeader.height.toFloat()/2)
-            titleNameHeaderBottomExtremePosition = dpToPx(48f).toFloat() - titleNameHeader.height
+            titleNameHeaderPositionInCenter = toolbarHeight/2 - (titleNameHeader.height.toFloat()/2)
+            titleNameHeaderBottomExtremePosition = toolbarHeight - titleNameHeader.height
             profileNestedScrollView.scrollTo(0, 0)
         }
 

@@ -118,6 +118,11 @@
 
         <activity android:name=".ActivityAliasFunctionalityActivity">
         </activity>
+        <activity android:name=".services.ForegroundServiceActivity">
+        </activity>
+
+        <service android:name=".services.FirstForegroundService" android:enabled="true"
+            />
     </application>
 
 </manifest>

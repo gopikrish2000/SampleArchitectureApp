@@ -68,6 +68,8 @@
             android:id="@+id/nav_profile_camera"
             android:layout_width="48dp"
             android:layout_height="48dp"
+            android:src="@drawable/ic_action_ball"
+            android:tint="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/nav_profile_edit"
             />

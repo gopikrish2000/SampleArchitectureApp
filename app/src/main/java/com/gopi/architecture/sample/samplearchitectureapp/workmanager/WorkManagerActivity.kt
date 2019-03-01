@@ -1,18 +1,13 @@
 package com.gopi.architecture.sample.samplearchitectureapp.workmanager
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
-import android.widget.Toast
+import android.support.annotation.WorkerThread
+import android.support.v7.app.AppCompatActivity
+import androidx.work.OneTimeWorkRequest
+import androidx.work.WorkManager
+import androidx.work.WorkRequest
+import androidx.work.impl.WorkManagerImpl
 import com.gopi.architecture.sample.samplearchitectureapp.R
-import io.reactivex.Observable
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
-import java.util.concurrent.TimeUnit
-import android.content.ComponentName
-import android.content.Intent
-import android.content.pm.PackageManager
 
 
 class WorkManagerActivity : AppCompatActivity() {
@@ -21,5 +16,14 @@ class WorkManagerActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_work_manager)
     }
+
+    private fun doLogic() {
+//        val reqBuilder = OneTimeWorkRequest.Builder().
+//        WorkManager.getInstance().enqueue(reqBuilder)
+//        OneTimeWorkRequest().
+//        OneTimeWorkRequest.Builder()
+    }
+
+
 
 }

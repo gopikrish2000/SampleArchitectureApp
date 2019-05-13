@@ -1,6 +1,7 @@
 package com.gopi.architecture.sample.samplearchitectureapp
 
 import android.app.Application
+import com.facebook.drawee.backends.pipeline.Fresco
 
 class MainApplication : Application() {
 
@@ -15,5 +16,6 @@ class MainApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         instance = this
+        Fresco.initialize(this)
     }
 }

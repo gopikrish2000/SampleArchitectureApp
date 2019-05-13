@@ -3,6 +3,7 @@
           package="com.gopi.architecture.sample.samplearchitectureapp">
 
     <application
+        android:name=".MainApplication"
         android:icon="@drawable/ic_action_bus"
         android:label="@string/app_name"
         android:roundIcon="@drawable/ic_action_bus"
@@ -126,6 +127,17 @@
             android:enabled="true"/>
 
         <activity android:name=".parallaxAnimation.ParallaxAnimationActivity">
+        </activity>
+        <activity android:name=".UIStuff.snackBar.SnackBarActivity">
+        </activity>
+        <activity
+            android:name=".animations.FadeTransitionsActivity"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden"
+            >
+        </activity>
+        <activity android:name=".keyboardIssues.KeyboardIssuesActivity"
+                  android:windowSoftInputMode="adjustResize|stateAlwaysHidden"
+                  >
         </activity>
     </application>
 

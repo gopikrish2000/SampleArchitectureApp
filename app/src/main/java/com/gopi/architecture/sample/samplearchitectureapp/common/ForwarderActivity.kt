@@ -4,16 +4,12 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.gopi.architecture.sample.samplearchitectureapp.R
-import com.gopi.architecture.sample.samplearchitectureapp.livedatalatest.LiveDataActivity
-import com.gopi.architecture.sample.samplearchitectureapp.livedatalatest.SecondLiveDataActivity
-import com.gopi.architecture.sample.samplearchitectureapp.livedatalatest.room.RoomLiveDataTestActivity
-import com.gopi.architecture.sample.samplearchitectureapp.parallaxAnimation.ParallaxAnimationActivity
-import com.gopi.architecture.sample.samplearchitectureapp.rxjavaLatest.RxjavaPracActivity
-import com.gopi.architecture.sample.samplearchitectureapp.services.ForegroundServiceActivity
-import com.gopi.architecture.sample.samplearchitectureapp.workmanager.WorkManagerActivity
+import com.gopi.architecture.sample.samplearchitectureapp.UIStuff.snackBar.SnackBarActivity
+import com.gopi.architecture.sample.samplearchitectureapp.animations.FadeTransitionsActivity
+import com.gopi.architecture.sample.samplearchitectureapp.keyboardIssues.KeyboardIssuesActivity
 
 class ForwarderActivity : AppCompatActivity() {
-    var classToForward = ParallaxAnimationActivity::class.java
+    var classToForward = KeyboardIssuesActivity::class.java
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

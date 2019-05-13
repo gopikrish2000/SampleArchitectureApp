@@ -15,6 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
+        app:layout_behavior="com.gopi.architecture.sample.samplearchitectureapp.parallaxAnimation.FixedAppBarLayoutBehavior"
         >
 
         <android.support.design.widget.CollapsingToolbarLayout
@@ -93,11 +94,10 @@
                     app:layout_constraintRight_toRightOf="parent"
                     >
 
-                    <ImageView
+                    <com.facebook.drawee.view.SimpleDraweeView
                         android:id="@+id/profileIv"
                         android:layout_width="124dp"
                         android:layout_height="124dp"
-                        android:src="@color/light_gray"
                         app:layout_collapseMode="parallax"
                         />
                 </android.support.constraint.ConstraintLayout>

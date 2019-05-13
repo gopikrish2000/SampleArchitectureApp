@@ -12,5 +12,6 @@
     <color name="nav_yellow">#f7b447</color>
     <color name="nav_pink">#ff6781</color>
     <color name="nav_violet">#8d72ff</color>
+    <color name="black">#000000</color>
 
 </resources>

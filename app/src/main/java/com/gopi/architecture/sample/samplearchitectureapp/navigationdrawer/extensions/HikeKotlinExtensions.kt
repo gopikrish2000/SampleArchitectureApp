@@ -18,6 +18,7 @@ import android.view.animation.BounceInterpolator
 import android.view.animation.DecelerateInterpolator
 import android.view.animation.Interpolator
 import android.widget.TextView
+import android.widget.Toast
 import com.gopi.architecture.sample.samplearchitectureapp.BuildConfig
 import java.io.Serializable
 
@@ -99,6 +100,10 @@ fun Context?.dpToPx(dp: Float): Int {
     return this?.run { dp * resources.displayMetrics.density }?.toInt() ?: 0
 }
 
+fun Context?.showToast(msg:String) {
+    Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
+}
+
 inline fun <reified T> AppCompatActivity?.startActivityWithData(vararg pairs: Pair<String, Any?>) {
     this ?: return
     this.baseContext.startActivityWithData<T>(*pairs)
@@ -174,6 +179,7 @@ private fun Any.logWithMode(type: String, message: String, explicitTag: String? 
         else -> { /*ignore */ }
     }
 }
+
 
 val Any.CLASS_TAG: String             // No need to create explict TAG variable , use CLASS_TAG
         get() = this.javaClass.simpleName

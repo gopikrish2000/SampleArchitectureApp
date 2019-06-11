@@ -9,6 +9,8 @@
         android:roundIcon="@drawable/ic_action_bus"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".MORELATEST2019.FirstCoroutineActivity">
+        </activity>
         <activity android:name=".MainActivity">
 
             <!--
@@ -132,12 +134,11 @@
         </activity>
         <activity
             android:name=".animations.FadeTransitionsActivity"
-            android:windowSoftInputMode="adjustResize|stateAlwaysHidden"
-            >
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden">
         </activity>
-        <activity android:name=".keyboardIssues.KeyboardIssuesActivity"
-                  android:windowSoftInputMode="adjustResize|stateAlwaysHidden"
-                  >
+        <activity
+            android:name=".keyboardIssues.KeyboardIssuesActivity"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden">
         </activity>
     </application>
 

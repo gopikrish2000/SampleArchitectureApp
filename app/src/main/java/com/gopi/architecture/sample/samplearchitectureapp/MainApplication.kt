@@ -1,6 +1,7 @@
 package com.gopi.architecture.sample.samplearchitectureapp
 
 import android.app.Application
+import android.os.Handler
 import com.facebook.drawee.backends.pipeline.Fresco
 
 class MainApplication : Application() {
@@ -8,7 +9,7 @@ class MainApplication : Application() {
     companion object {
         lateinit private var instance: MainApplication
 
-        fun getAppContext(): Application {
+        fun getAppContext(): MainApplication {
             return instance
         }
     }
@@ -17,5 +18,9 @@ class MainApplication : Application() {
         super.onCreate()
         instance = this
         Fresco.initialize(this)
+    }
+
+    fun showToast(msg:String){
+
     }
 }

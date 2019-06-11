@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item  >
+        <shape android:shape="oval">
+            <size android:height="54dp" android:width="54dp" />
+            <stroke android:color="@color/white" android:width="0.8dp" />
+            <solid android:color="@color/blue_action_bar" />
+        </shape>
+    </item>
+
+    <item >
+        <bitmap android:src="@drawable/ic_bold_tick"
+                android:tint="@color/white"/>
+    </item>
+</layer-list>

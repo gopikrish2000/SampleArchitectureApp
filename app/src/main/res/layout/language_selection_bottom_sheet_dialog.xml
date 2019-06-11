@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@color/transparent"
+              android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/bottomsheet_layout_parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bottom_sheet_bg_shape"
+        android:orientation="vertical"
+        android:paddingBottom="4dp">
+
+        <com.bsb.hike.view.CustomFontTextView
+            android:id="@+id/header_text"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/palette_xcard_small_item_dimens"
+            android:fontFamily="@font/roboto_medium"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/size_16dp"
+            android:text="@string/srml_sticker_language_preference"
+            android:textColor="#272D39"
+            android:textSize="14sp"
+            android:visibility="visible"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="40dp"
+            app:layout_constraintTop_toBottomOf="@+id/header_text"/>
+
+        <com.bsb.hike.view.CustomFontTextView
+            android:id="@+id/btn_done"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/newonb_rounded_btn_deep_sky_blue"
+            android:gravity="center"
+            android:letterSpacing="-0.02"
+            android:lineSpacingExtra="5.2sp"
+            android:text="@string/done"
+            android:textAppearance="@style/OnBoardingButtonFont"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

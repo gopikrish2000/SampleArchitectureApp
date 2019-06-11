@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   xmlns:tools="http://schemas.android.com/tools"
+                                                   android:id="@+id/item_container"
+                                                   android:layout_width="wrap_content"
+                                                   android:layout_height="wrap_content"
+                                                   android:paddingTop="8dp"
+                                                   android:paddingBottom="8dp">
+
+    <!--<RelativeLayout
+        android:id="@+id/imgParent"
+
+        android:layout_width="154dp"
+        android:layout_height="72dp"
+        android:background="@drawable/corners"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent">-->
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/imgParent"
+        android:layout_width="154dp"
+        android:layout_height="72dp"
+        app:cardCornerRadius="14dp"
+        app:cardElevation="0dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:strokeColor="@color/blue_action_bar"
+        app:strokeWidth="2dp">
+
+        <ImageView
+            android:id="@+id/languageIv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#FFCFCF"
+            android:scaleType="center"
+            android:visibility="visible"
+            />
+        <!--android:src="#FFCFCF"-->
+    </com.google.android.material.card.MaterialCardView>
+    <!--</RelativeLayout>-->
+
+    <com.bsb.hike.view.CustomFontTextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:textColor="#7D8187"
+        app:layout_constraintLeft_toLeftOf="@+id/imgParent"
+        app:layout_constraintRight_toRightOf="@+id/imgParent"
+        app:layout_constraintTop_toBottomOf="@+id/imgParent"
+        tools:text="title"/>
+
+    <ImageView
+        android:id="@+id/tick"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="4dp"
+        android:background="@drawable/blue_circular_tick"
+        android:scaleType="center"
+        android:visibility="visible"
+        app:layout_constraintRight_toRightOf="@id/imgParent"
+        app:layout_constraintTop_toTopOf="@id/imgParent"
+        />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
